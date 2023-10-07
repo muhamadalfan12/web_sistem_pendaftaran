@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\PesertaController;
 
 Route::get('/', [LoginController::class, 'index']);
 Route::get('/pendaftaran', [PendaftaranController::class, 'index']);
+Route::get('/listpeserta', [PesertaController::class, 'index'])->name('listpeserta');
 
 // Rute Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -16,5 +18,3 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     // Rute yang perlu dilindungi
 });
-
-
