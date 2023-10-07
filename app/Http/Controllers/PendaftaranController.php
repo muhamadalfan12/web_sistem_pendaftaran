@@ -9,6 +9,6 @@ class PendaftaranController extends Controller
 {
     public function index()
     {
-        return view('pages.index'); // Mengembalikan tampilan index.blade.php
+        return view('pages.pendaftaran'); // Mengembalikan tampilan pendaftaran.blade.php
     }
 }

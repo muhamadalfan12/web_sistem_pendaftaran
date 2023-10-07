@@ -8,11 +8,19 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index(){
+    
+    public function index()
+    {
         return view('auth.login');
     }
-
+    
     public function authenticated(Request $request)
+    {
+        return redirect('/pendaftaran');
+        // Isi metode ini sesuai dengan kebutuhan Anda
+    }
+    
+    public function login(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
@@ -23,13 +31,16 @@ class LoginController extends Controller
         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/index');
+
+            // Arahkan pengguna ke halaman pendaftaran
+            return redirect('/pendaftaran');
         }
 
         return back()->withErrors([
             'loginError' => 'Email atau Password salah'
-        ]);
+        ])->withInput($request->except('password'));
     }
+
     
 
     public function logout(Request $request)

@@ -8,6 +8,9 @@
     <title>Pendaftaran</title>
     <link rel="icon" href="{{ asset('/storage/images/logohidayatullah.png') }}">
 </head>
+<body>
+    <h1>halo</h1>
+</body>
 
 {{-- <body>
     @include('templates.navbar')
