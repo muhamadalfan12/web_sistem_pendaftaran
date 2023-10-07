@@ -11,10 +11,10 @@
 
 <body>
     <div class="sheet wrapper"
-        style="position: relative; display: flex; padding: 4rem 0 0 0; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; background-image: url('/storage/images/blk-hidayatullah-cirebon.jpeg'); background-size: cover;">
+        style="position: relative; display: flex; padding: 4rem 0 0 0; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; background-image: url('/storage/images/gedung-blkk.jpeg'); background-size: cover;">
         <div class="header text-center mb-5">
             <img class="mb-4" src="/storage/images/logo-kemnaker.png" alt="" width="60" height="60" style="margin-right: 8px">
-        <label style="font-size: 42px" for="">KEMENTERIAN KETENAGAKERJAAN REPUBLIK INDONESIA</label>
+        <label style="font-size: 25px; font-weight: bold;" for="">KEMENTERIAN KETENAGAKERJAAN REPUBLIK INDONESIA</label>
     </div>
         <div class="col-md-4">
             @if (session()->has('success'))
