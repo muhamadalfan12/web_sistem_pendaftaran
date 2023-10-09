@@ -12,7 +12,7 @@ Route::get('/listpeserta', [PesertaController::class, 'index'])->name('listpeser
 // Rute Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticated'])->name('login.process');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/', [LoginController::class, 'logout'])->name('logout');
 
 // Rute yang perlu dilindungi oleh middleware 'auth'
 Route::middleware(['auth'])->group(function () {

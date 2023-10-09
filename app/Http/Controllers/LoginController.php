@@ -23,22 +23,24 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required'
         ]);
-
-        $credentials = $request->only('email', 'password');
         
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
 
-            // Arahkan pengguna ke halaman pendaftaran
-            return redirect('/pendaftaran');
-        }
+        $credentials = $request->only('username', 'password');
+        
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+
+        // Arahkan pengguna ke halaman pendaftaran
+        return redirect('/pendaftaran');
+    }
 
         return back()->withErrors([
-            'loginError' => 'Email atau Password salah'
+            'loginError' => 'Username atau Password salah'
         ])->withInput($request->except('password'));
+        
     }
 
     
@@ -51,6 +53,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/');
     }
 }
