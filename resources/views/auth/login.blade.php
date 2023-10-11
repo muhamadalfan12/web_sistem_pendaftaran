@@ -24,27 +24,27 @@
                 </div>
             @endif
 
-            @if (session()->has('errorMessage'))
+            @if (session()->has('loginError'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ session('errorMessage') }}
+                    {{ session('loginError') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
 
-            <form action="{{ route('login.process') }}" method="POST">
-                @csrf
+            
                 
                 <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
+                <form action="/login" method="post">
+                    @csrf
                 <div class="form-floating">
-                    <input type="username" class="form-control @error('username') is-invalid @enderror" id="username"
-                        name="username" placeholder="Input your username" required value="{{ old('username') }}">
+                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
+                        name="username" placeholder="Input your username" autofocus required value="{{ old('username') }}">
                     @error('username')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
-                    <label for="floatingInput">Username</label>
+                    <label for="username">Username</label>
                 </div>
                 <div class="form-floating mt-4">
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password"

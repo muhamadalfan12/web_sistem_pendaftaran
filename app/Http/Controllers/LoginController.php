@@ -16,30 +16,17 @@ class LoginController extends Controller
     
     public function authenticated(Request $request)
     {
-        return redirect('/pendaftaran');
-        // Isi metode ini sesuai dengan kebutuhan Anda
-    }
-    
-    public function login(Request $request)
-    {
-        $request->validate([
+        $credentials = $request->validate([
             'username' => 'required',
             'password' => 'required'
         ]);
         
-
-        $credentials = $request->only('username', 'password');
-        
     if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
-
-        // Arahkan pengguna ke halaman pendaftaran
-        return redirect('/pendaftaran');
+        return redirect()->intended('/pendaftaran'); // Arahkan pengguna ke halaman pendaftaran
     }
 
-        return back()->withErrors([
-            'loginError' => 'Username atau Password salah'
-        ])->withInput($request->except('password'));
+        return back()->with('loginError', 'Username atau Password salah');
         
     }
 

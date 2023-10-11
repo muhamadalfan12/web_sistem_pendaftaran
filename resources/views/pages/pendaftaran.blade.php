@@ -9,7 +9,23 @@
     <link rel="icon" href="{{ asset('/storage/images/logohidayatullah.png') }}">
 </head>
 <body>
-    <h1>halo</h1>
+    <div class="date">
+        <label class="date float-end" style="font-weight: 500">
+            {{ date('l, j F Y') }}
+        </label>
+    </div>
+    <section class="pendaftaran" style="padding: 1.5rem 24px 1.5rem 24px">
+        <h1 class="text-center"> <a href="?" class="text-decoration-none"
+                style="color: black">List Pendaftaran</a>
+        </h1>
+        <div class="input mb-2" style="padding-top: 2rem">
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-add mb-1"
+                        style="margin-right: 24px">Tambah</a>
+                    <a class="btn btn-print mb-1 ">Export To Excel</a>
+                </div>
+    </section>
 </body>
 
 {{-- <body>
@@ -250,7 +266,7 @@
     @extends('templates.footer')
 </body>
 
-<style>
+{{-- <style>
     .date {
         margin-right: 16px;
     }
@@ -364,6 +380,10 @@
         color: #ffffff;
         border: 1px solid #33434f
     }
-</style> --}}
+</style> --}} --}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>
