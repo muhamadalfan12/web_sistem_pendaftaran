@@ -10,7 +10,7 @@
         <body>
             <div class="row">
                 <div class="col">
-                <section class="kwitansi" style="padding: 1.5rem 24px 1.5rem 24px">
+                <section class="konten" style="padding: 1.5rem 24px 1.5rem 24px">
                     <h1 class="text-center"> <a href="{{ route('listpeserta') }}" class="text-decoration-none"
                             style="color: black">List Peserta BLKK</a>
                     </h1>
@@ -31,6 +31,7 @@
                     </div>
                 </div>
             </div>
+            @extends('templates.footer')
         </body>
 
 
@@ -47,7 +48,7 @@
         border: 1px solid #8e4761
     }
 
-    body {
+    .body {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
@@ -70,6 +71,11 @@
         padding: 0 4px 0 4px;
         vertical-align: middle;
         height: 6rem;
+    }
+
+    .konten {
+        flex-grow: 1;
+        min-height: calc(100vh - 60px);
     }
 
         </style>

@@ -9,11 +9,6 @@
     <link rel="icon" href="{{ asset('/storage/images/logohidayatullah.png') }}">
 </head>
 <body>
-    <div class="date">
-        <label class="date float-end" style="font-weight: 500">
-            {{ date('l, j F Y') }}
-        </label>
-    </div>
     <section class="pendaftaran" style="padding: 1.5rem 24px 1.5rem 24px">
         <h1 class="text-center"> <a href="?" class="text-decoration-none"
                 style="color: black">LIST PENDAFTARAN</a>
@@ -396,6 +391,12 @@
         border: 1px solid #33434f
     }
 </style> --}}
+<style>
+        .pendaftaran {
+        flex-grow: 1;
+        min-height: calc(100vh - 60px);
+    }
+</style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
