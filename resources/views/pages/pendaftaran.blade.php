@@ -21,12 +21,15 @@
                 </div>
                 <table class="mt-3 table table-hover table-drak text-center">
                     <thead>
-                        <tr class="bg-info">
+                        <tr class="bg-warning">
                             <th>No</th>
                             <th>Nama Peserta</th>
-                            <th>Pelatihan</th>
+                            <th>Nama Pelatihan</th>
+                            <th>Nama Pelatih</th>
+                            <th>No Pelatih</th>
                             <th>Waktu Pelatihan</th>
-                            <th>No. HP</th>
+                            <th>Biaya</th>
+                            <th>Kouta Peserta</th>
                         </tr>
                     </thead>
                     <tbody>

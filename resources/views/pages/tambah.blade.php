@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="container mb-3">
-                            <label for="pembayaran" class="col-form-label">Pembayaran</label>
+                            <label for="pembayaran" class="col-form-label">Biaya</label>
                             <div class="container">
                                 <div class="row">
                                     <div class="col">
@@ -133,7 +133,7 @@
                                     placeholder="Masukkan Jumlah" required>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-add mt-3 shadow-sm">Tambah</button>
+                        <button type="submit" class="btn btn-primary mt-3 shadow-sm">Tambah</button>
                     </form>
                 </div>
             </div>
