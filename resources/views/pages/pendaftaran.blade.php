@@ -11,7 +11,7 @@
 <body>
     <section class="pendaftaran" style="padding: 1.5rem 24px 1.5rem 24px">
         <h1 class="text-center"> <a href="?" class="text-decoration-none"
-                style="color: black">LIST PENDAFTARAN</a>
+                style="color: black">BLKK MULTIMEDIA AT-TAQWA</a>
         </h1>
         <div class="input mb-2" style="padding-top: 2rem">
             <div class="row mt-3">
@@ -21,15 +21,15 @@
                 </div>
                 <table class="mt-3 table table-hover table-drak text-center">
                     <thead>
-                        <tr class="bg-warning">
+                        <tr class="bg-info">
                             <th>No</th>
-                            <th>Nama Peserta</th>
                             <th>Nama Pelatihan</th>
                             <th>Nama Pelatih</th>
-                            <th>No Pelatih</th>
+                            <th>Nomer Pelatih</th>
                             <th>Waktu Pelatihan</th>
                             <th>Biaya</th>
                             <th>Kouta Peserta</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

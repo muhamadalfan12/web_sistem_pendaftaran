@@ -12,7 +12,7 @@
         <!-- Copyright -->
         <div class="text-center p-3">
             © 2023 Copyright:
-            <a class="text-primary text-decoration-none" href="https://hidayatullah.or.id/">BLKK Multimedia Cirebon</a>
+            <a class="text-primary text-decoration-none" href="https://skillhub.kemnaker.go.id/mitra/temukan-mitra/blk-komunitas-at-taqwa-cb5e30ac-f3ad-4067-910c-6774a32ead33">BLKK Multimedia At-taqwa Cirebon</a>
         </div>
         <!-- Copyright -->
     </footer>
