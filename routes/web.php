@@ -4,10 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PesertaController;
-use App\Http\Controllers\TambahController;
 
 Route::get('/', [LoginController::class, 'index']);
-Route::get('/pendaftaran', [PendaftaranController::class, 'index'])->middleware('auth');
+
 Route::get('/listpeserta', [PesertaController::class, 'index'])->name('listpeserta');
 
 // Rute Login
@@ -17,7 +16,5 @@ Route::post('/login', [LoginController::class, 'authenticated']);
 
 // Rute yang perlu dilindungi oleh middleware 'auth'
 Route::middleware(['auth'])->group(function () {
-    // Rute yang perlu dilindungi
+    Route::resource('pendaftaran', PendaftaranController::class);
 });
-
-Route::get('/tambah', [TambahController::class, 'tambah']);

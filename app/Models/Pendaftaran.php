@@ -1,14 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// use App\Models\User;
 
 class Pendaftaran extends Model
 {
-    protected $table = 'tabel_pendaftaran'; // Gantilah 'nama_tabel_pendaftaran' sesuai dengan nama tabel Anda
-
+    use HasFactory;
     protected $fillable = [
         'nama_pelatihan',
         'nama_pelatih',
@@ -17,6 +16,4 @@ class Pendaftaran extends Model
         'jumlah_biaya',
         'kouta_peserta',
     ];
-
-    // Jika ada relasi dengan model lain, Anda dapat mendefinisikannya di sini.
 }

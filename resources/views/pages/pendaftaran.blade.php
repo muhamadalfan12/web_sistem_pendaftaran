@@ -16,7 +16,7 @@
         <div class="input mb-2" style="padding-top: 2rem">
             <div class="row mt-3">
                 <div class="col">
-                    <a class="btn btn-primary" href="/tambah" role="button">Tambah</a>
+                    <a class="btn btn-primary" href="/pendaftaran/create" role="button">Tambah</a>
                     <button type="button" class="btn btn-success" href="#" role="button">Export To Excel</button>
                 </div>
                 <table class="mt-3 table table-hover table-drak text-center">
@@ -33,7 +33,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                    
+                        @foreach ($pendaftarans as $pendaftaran)
+                    <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $pendaftaran->nama_pelatihan }}</td>
+                    <td>{{ $pendaftaran->nama_pelatih }}</td>
+                    <td>{{ $pendaftaran->nomer_pelatih }}</td>
+                    <td>{{ $pendaftaran->waktu_pelatihan }}</td>
+                    <td>{{ $pendaftaran->jumlah_biaya }}</td>
+                    <td>{{ $pendaftaran->kouta_peserta }}</td>
+                    <td>
+                        <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                        action="{{ route('pendaftaran.destroy', $pendaftaran->id) }}" method="POST">
+                        <a href="{{ route('pendaftaran.edit', $pendaftaran->id) }}"
+                            class="btn btn-sm btn-primary">EDIT</a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                    </form>
+                </td>
+                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
                 

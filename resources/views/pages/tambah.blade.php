@@ -19,6 +19,8 @@
                         <h1>PELATIHAN</h1>
                     </div>
                     <div class="row mb-3">
+                        <form action="{{ route('pendaftaran.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                         <div class="col-sm-6">
                             <a class="btn btn-back mb-3 shadow-sm" href="/pendaftaran">Kembali</a>
                         </div>
@@ -46,7 +48,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <label for="waktu_pelatihan" class="col-form-label">Waktu Pelatihan</label>
-                                <input class="form-control shadow-sm bg-body-tertiary rounded" id="waktu_pelatihan" name="waktu_pelatihan"
+                                <input type="text" class="form-control shadow-sm bg-body-tertiary rounded" id="waktu_pelatihan" name="waktu_pelatihan" value="01 januari 2023 - 02 januari 2023" 
                                     placeholder="Masukkan Waktu Pelatihan" required>
                             </div>
                         </div>
@@ -66,6 +68,7 @@
                         </div>
                         <button type="submit" class="btn btn-add mt-3 shadow-sm">Tambah</button>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,6 +76,23 @@
 </div>
 </div>
 @extends('templates.footer')
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script>
+    $(function() {
+    $('input[name="waktu_pelatihan"]').daterangepicker({
+        showDropdowns: true,
+        locale: {
+        format: 'DD MMMM YYYY'
+        },
+    }, function(start, end, label) {
+        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    });
+    });
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
 </script>
