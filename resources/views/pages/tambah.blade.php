@@ -40,8 +40,8 @@
 
                         <div class="row mb-3">
                             <div class="col-sm-6">
-                                <label for="kouta" class="col-form-label">Kouta Peserta</label>
-                                <input type="text" class="form-control shadow-sm bg-body-tertiary rounded" id="kouta" name="kouta"
+                                <label for="kouta_peserta" class="col-form-label">Kouta Peserta</label>
+                                <input type="text" class="form-control shadow-sm bg-body-tertiary rounded" id="kouta_peserta" name="kouta_peserta"
                                     placeholder="Masukkan Kouta Peserta" onkeypress="return hanyaAngka(event)" required>
                             </div>
                             <div class="col-sm-6">
@@ -53,18 +53,18 @@
 
                         <div class="row mb-3">
                             <div class="col-sm-6">
-                                <label for="no_pelatih" class="col-form-label"> Nomer Pelatih </label>
-                                <input id="no_pelatih" class="form-control shadow-sm bg-body-tertiary rounded" type="text" id="no_pelatih"
-                                    name="no_pelatih" placeholder="Masukkan Nomor Pelatih"
+                                <label for="nomer_pelatih" class="col-form-label"> Nomer Pelatih </label>
+                                <input id="nomer_pelatih" class="form-control shadow-sm bg-body-tertiary rounded" type="text" id="nomer_pelatih"
+                                    name="nomer_pelatih" placeholder="Masukkan Nomor Pelatih"
                                     onkeypress="return hanyaAngka(event)" required>
                             </div>
                             <div class="col-sm-6">
-                                <label for="jumlah" class="col-form-label">Jumlah Biaya</label>
-                                <input class="form-control shadow-sm bg-body-tertiary rounded" id="jumlah" name="jumlah"
+                                <label for="jumlah_biaya" class="col-form-label">Jumlah Biaya</label>
+                                <input class="form-control shadow-sm bg-body-tertiary rounded" id="jumlah_biaya" name="jumlah_biaya"
                                     placeholder="Masukkan Jumlah" required>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3 shadow-sm">Tambah</button>
+                        <button type="submit" class="btn btn-add mt-3 shadow-sm">Tambah</button>
                     </form>
                 </div>
             </div>
@@ -174,7 +174,7 @@
         }
     }
     // Dapatkan elemen input jumlah berdasarkan ID
-    var jumlahInput = document.getElementById('jumlah');
+    var jumlahInput = document.getElementById('jumlah_biaya');
 
     // Tambahkan event listener untuk memanggil fungsi formatCurrency saat nilai berubah
     jumlahInput.addEventListener('input', function() {

@@ -10,13 +10,12 @@ class Pendaftaran extends Model
     protected $table = 'tabel_pendaftaran'; // Gantilah 'nama_tabel_pendaftaran' sesuai dengan nama tabel Anda
 
     protected $fillable = [
-        'nama_pelatihan', 
-        'waktu_pelatihan', 
-        'biaya', 
-        'kouta_peserta', 
-        'nama_pelatih', 
-        'email', 
-        'no_pelatih'
+        'nama_pelatihan',
+        'nama_pelatih',
+        'nomer_pelatih',
+        'waktu_pelatihan',
+        'jumlah_biaya',
+        'kouta_peserta',
     ];
 
     // Jika ada relasi dengan model lain, Anda dapat mendefinisikannya di sini.

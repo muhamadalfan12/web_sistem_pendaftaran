@@ -27,7 +27,7 @@
                             <th>Nama Pelatih</th>
                             <th>Nomer Pelatih</th>
                             <th>Waktu Pelatihan</th>
-                            <th>Biaya</th>
+                            <th>Jumlah Biaya</th>
                             <th>Kouta Peserta</th>
                             <th>Aksi</th>
                         </tr>

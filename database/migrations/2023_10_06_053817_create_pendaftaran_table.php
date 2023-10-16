@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('pendaftaran', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pelatihan');
-            $table->string('waktu_pelatihan');
-            $table->string('biaya');
-            $table->string('kouta_peserta');
             $table->string('nama_pelatih');
-            $table->string('email')->unique();
-            $table->string('no_pelatih');
+            $table->string('nomer_pelatih');
+            $table->string('waktu_pelatihan');
+            $table->string('jumlah_biaya');
+            $table->string('kouta_peserta');
             $table->timestamps();
         });
     }
