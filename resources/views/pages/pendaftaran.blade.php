@@ -17,7 +17,8 @@
             <div class="row mt-3">
                 <div class="col">
                     <a class="btn btn-primary" href="/pendaftaran/create" role="button">Tambah</a>
-                    <button type="button" class="btn btn-success" href="#" role="button">Export To Excel</button>
+                    <a href="{{ url('pendaftaran/export/excel') }}" class="btn btn-success">Export To Excel</a>
+                    {{-- <button type="button" class="btn btn-success" href="#" role="button">Export To Excel</button> --}}
                 </div>
                 <table class="mt-3 table table-hover table-drak text-center">
                     <thead>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PesertaController;
+use App\Models\Pendaftaran;
 
 Route::get('/', [LoginController::class, 'index']);
 
@@ -18,3 +19,5 @@ Route::post('/login', [LoginController::class, 'authenticated']);
 Route::middleware(['auth'])->group(function () {
     Route::resource('pendaftaran', PendaftaranController::class);
 });
+
+Route::get('/pendaftaran/export/excel', [PendaftaranController::class, 'export_excel']);

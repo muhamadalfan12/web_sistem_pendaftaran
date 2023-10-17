@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportData;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PendaftaranController extends Controller
 {
@@ -20,16 +22,16 @@ class PendaftaranController extends Controller
                 ->where('nama_pelatihan', 'LIKE', '%' . $search . '%')
                 ->orWhere('nama_pelatih', 'LIKE', '%' . $search . '%')
                 ->orWhere('nomer_pelatih', 'LIKE', '%' . $search . '%')
-                ->orWhere('waktu_pelatihan', 'LIKE', '%' . $search . '%') 
+                ->orWhere('waktu_pelatihan', 'LIKE', '%' . $search . '%')
                 ->orWhere('jumlah_biaya', 'LIKE', '%' . $search . '%')
                 ->orWhere('kouta_peserta', 'LIKE', '%' . $search . '%');
         })->get();
-    
+
         // if ($pendaftarans->count() == 0) {
         //     session()->flash('error', 'pendaftaran tidak ditemukan');
         //     return redirect('/pendaftaran');
         // }
-    
+
         return view('pages.pendaftaran', [
             'pendaftarans' => $pendaftarans,
         ]);
@@ -49,14 +51,14 @@ class PendaftaranController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_pelatihan'=> 'required',
-            'nama_pelatih'=> 'required',
-            'nomer_pelatih'=> 'required',
-            'waktu_pelatihan'=> 'required',
-            'jumlah_biaya'=> 'required',
-            'kouta_peserta'=> 'required',
+            'nama_pelatihan' => 'required',
+            'nama_pelatih' => 'required',
+            'nomer_pelatih' => 'required',
+            'waktu_pelatihan' => 'required',
+            'jumlah_biaya' => 'required',
+            'kouta_peserta' => 'required',
         ]);
-    
+
         $pendaftaran = Pendaftaran::create([
             'nama_pelatihan'  => $request->nama_pelatihan,
             'nama_pelatih'    => $request->nama_pelatih,
@@ -65,11 +67,11 @@ class PendaftaranController extends Controller
             'jumlah_biaya'    => $request->jumlah_biaya,
             'kouta_peserta'   => $request->kouta_peserta,
         ]);
-    
-        if($pendaftaran){
+
+        if ($pendaftaran) {
             //redirect dengan pesan sukses
             return redirect()->route('pendaftaran.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->route('pendaftaran.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
@@ -109,5 +111,10 @@ class PendaftaranController extends Controller
         $pendaftaran->delete();
 
         return redirect()->route('pendaftaran.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+
+    function export_excel()
+    {
+        return Excel::download(new ExportData, "Pendaftaran BLKK.xlsx");
     }
 }
