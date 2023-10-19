@@ -18,6 +18,7 @@ Route::post('/login', [LoginController::class, 'authenticated']);
 // Rute yang perlu dilindungi oleh middleware 'auth'
 Route::middleware(['auth'])->group(function () {
     Route::resource('pendaftaran', PendaftaranController::class);
+    Route::resource('peserta', PesertaController::class);
 });
 
 Route::get('/pendaftaran/export/excel', [PendaftaranController::class, 'export_excel']);

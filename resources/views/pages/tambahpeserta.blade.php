@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Tambah Pelatihan</title>
+    <title>Tambah Peserta</title>
     <link rel="icon" href="{{ asset('public/storage/images/logo-kemnaker.png') }}">
 </head>
 
@@ -19,53 +19,51 @@
                         <h1>PELATIHAN</h1>
                     </div>
                     <div class="row mb-3">
-                        <form action="{{ route('pendaftaran.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('peserta.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                         <div class="col-sm-6">
-                            <a class="btn btn-back mb-3 shadow-sm" href="/pendaftaran">Kembali</a>
+                            <a class="btn btn-back mb-3 shadow-sm" href="/pendaftaran/peserta">Kembali</a>
                         </div>
                         
                         <div class="row mb-3">
                             <div class="col-sm-6">
-                                <label for="nama_pelatihan" class="col-form-label">Nama Pelatihan</label>
-                                <input type="text" class="form-control shadow-sm bg-body-tertiary rounded" id="nama_pelatihan" name="nama_pelatihan"
-                                    placeholder="Masukkan Nama Pelatihan"
+                                <label for="nama_peserta" class="col-form-label">Nama Peserta</label>
+                                <input type="text" class="form-control shadow-sm bg-body-tertiary rounded" id="nama_peserta" name="nama_peserta"
+                                    placeholder="Masukkan Nama Peserta"
                                     onkeypress="return hanyaHurufDanSpasi(event)" required>
                             </div>
                             <div class="col-sm-6">
-                                <label for="nama_pelatih" class="col-form-label">Nama Pelatih</label>
-                                <input type="text" class="form-control shadow-sm bg-body-tertiary rounded" id="nama_pelatih" name="nama_pelatih"
-                                    placeholder="Masukkan Nama Pelatih"
-                                    onkeypress="return hanyaHurufDanSpasi(event)" required>
+                                <label for="alamat_peserta" class="col-form-label">Alamat Peserta</label>
+                                <input class="form-control shadow-sm bg-body-tertiary rounded" id="alamat_peserta" name="alamat_peserta"
+                                    placeholder="Masukkan Alamat Peserta" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-sm-6">
-                                <label for="kouta_peserta" class="col-form-label">Kouta Peserta</label>
-                                <input type="text" class="form-control shadow-sm bg-body-tertiary rounded" id="kouta_peserta" name="kouta_peserta"
-                                    placeholder="Masukkan Kouta Peserta" onkeypress="return hanyaAngka(event)" required>
+                                <label for="nomer_telepon" class="col-form-label">Nomer Telepon</label>
+                                <input type="text" class="form-control shadow-sm bg-body-tertiary rounded" id="nomer_telepon" name="nomer_telepon"
+                                    placeholder="Masukkan Nomer Telepon" onkeypress="return hanyaAngka(event)" required>
                             </div>
                             <div class="col-sm-6">
-                                <label for="waktu_pelatihan" class="col-form-label">Waktu Pelatihan</label>
-                                <input type="text" class="form-control shadow-sm bg-body-tertiary rounded" id="waktu_pelatihan" name="waktu_pelatihan" value="01 januari 2023 - 02 januari 2023" 
-                                    placeholder="Masukkan Waktu Pelatihan" required>
+                                <label for="email_peserta" class="col-form-label">Email Peserta</label>
+                                <input class="form-control shadow-sm bg-body-tertiary rounded" id="email_peserta" name="email_peserta"
+                                    placeholder="Masukkan Email Peserta" required>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-sm-6">
-                                <label for="nomer_pelatih" class="col-form-label"> Nomer Pelatih </label>
-                                <input id="nomer_pelatih" class="form-control shadow-sm bg-body-tertiary rounded" type="text" id="nomer_pelatih"
-                                    name="nomer_pelatih" placeholder="Masukkan Nomor Pelatih"
-                                    onkeypress="return hanyaAngka(event)" required>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="jumlah_biaya" class="col-form-label">Jumlah Biaya</label>
-                                <input class="form-control shadow-sm bg-body-tertiary rounded" id="jumlah_biaya" name="jumlah_biaya"
-                                    placeholder="Masukkan Jumlah" required>
-                            </div>
+                        <div class="col-sm-6">
+                            <label class="col-form-label">PAS FOTO</label>
+                            <input type="file" class="form-control shadow-sm bg-body-tertiary rounded @error('image') is-invalid @enderror"
+                                name="image">
+                            <!-- error message untuk title -->
+                            @error('image')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
+
                         <button type="submit" class="btn btn-add mt-3 shadow-sm">Tambah</button>
                     </form>
                     </div>
@@ -79,19 +77,6 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-<script>
-    $(function() {
-    $('input[name="waktu_pelatihan"]').daterangepicker({
-        showDropdowns: true,
-        locale: {
-        format: 'DD MMMM YYYY'
-        },
-    }, function(start, end, label) {
-        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-    });
-    });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
