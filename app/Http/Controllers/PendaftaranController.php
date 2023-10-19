@@ -10,6 +10,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PendaftaranController extends Controller
 {
+    protected $pendaftarans;
+    public function __construct()
+    {
+        $this->pendaftarans = Pendaftaran::all();
+    }
     /**
      * Display a listing of the resource.
      */
@@ -81,8 +86,14 @@ class PendaftaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request)
+    public function show(Request $request, $id)
     {
+        $pendaftaran = $this->pendaftarans->find($id);
+        if (!$pendaftaran) {
+            session()->flash('error','Pelatihan tidak ditemukan');
+            return redirect()->route('pendaftaran.index');
+        }
+
         $search = $request->input('search');
 
         
@@ -97,6 +108,7 @@ class PendaftaranController extends Controller
 
         return view('pages.detail', [
             'pesertas' => $pesertas,
+            'pendaftaran' => $pendaftaran,
         ]);
     }
 

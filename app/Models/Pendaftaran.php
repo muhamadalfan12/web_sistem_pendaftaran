@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pendaftaran extends Model
 {
+    public function pesertas()
+    {
+        return $this->hasMany(Peserta::class);
+    }
+    
     use HasFactory;
     protected $fillable = [
         'nama_pelatihan',
