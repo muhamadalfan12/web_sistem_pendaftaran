@@ -8,10 +8,11 @@
     <title>Pendaftaran</title>
     <link rel="icon" href="{{ asset('/storage/images/logohidayatullah.png') }}">
 </head>
+
 <body>
     <section class="pendaftaran" style="padding: 1.5rem 24px 1.5rem 24px">
-        <h1 class="text-center"> <a href="?" class="text-decoration-none"
-                style="color: black">BLKK MULTIMEDIA AT-TAQWA</a>
+        <h1 class="text-center"> <a href="?" class="text-decoration-none" style="color: black">BLKK MULTIMEDIA
+                AT-TAQWA</a>
         </h1>
         <div class="input mb-2" style="padding-top: 2rem">
             <div class="row mt-3">
@@ -35,29 +36,29 @@
                     </thead>
                     <tbody>
                         @foreach ($pendaftarans as $pendaftaran)
-                    <tr onclick="window.location.href='pendaftaran/{pendaftaran}'">
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $pendaftaran->nama_pelatihan }}</td>
-                    <td>{{ $pendaftaran->nama_pelatih }}</td>
-                    <td>{{ $pendaftaran->nomer_pelatih }}</td>
-                    <td>{{ $pendaftaran->waktu_pelatihan }}</td>
-                    <td>{{ $pendaftaran->jumlah_biaya }}</td>
-                    <td>{{ $pendaftaran->kouta_peserta }}</td>
-                    <td>
-                        <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                        action="{{ route('pendaftaran.destroy', $pendaftaran->id) }}" method="POST">
-                        <a href="{{ route('pendaftaran.edit', $pendaftaran->id) }}"
-                            class="btn btn-sm btn-primary">EDIT</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
-                    </form>
-                </td>
-                    </tr>
-                    @endforeach
+                            <tr onclick="window.location.href='{{ route('pendaftaran.show', $pendaftaran->id) }}'">
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $pendaftaran->nama_pelatihan }}</td>
+                                <td>{{ $pendaftaran->nama_pelatih }}</td>
+                                <td>{{ $pendaftaran->nomer_pelatih }}</td>
+                                <td>{{ $pendaftaran->waktu_pelatihan }}</td>
+                                <td>{{ $pendaftaran->jumlah_biaya }}</td>
+                                <td>{{ $pendaftaran->kouta_peserta }}</td>
+                                <td>
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                        action="{{ route('pendaftaran.destroy', $pendaftaran->id) }}" method="POST">
+                                        <a href="{{ route('pendaftaran.edit', $pendaftaran->id) }}"
+                                            class="btn btn-sm btn-primary">EDIT</a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
-                
+
     </section>
     @extends('templates.footer')
 </body>
@@ -69,7 +70,7 @@
             {{ date('l, j F Y') }}
         </label>
     </div> --}}
-    {{-- <section class="kwitansi" style="padding: 1.5rem 24px 1.5rem 24px">
+{{-- <section class="kwitansi" style="padding: 1.5rem 24px 1.5rem 24px">
         <h1 class="text-center"> <a href="{{ route('kwitansi') }}" class="text-decoration-none"
                 style="color: black">List Pendaftaran</a>
         </h1>
@@ -416,14 +417,15 @@
     }
 </style> --}}
 <style>
-        .pendaftaran {
+    .pendaftaran {
         flex-grow: 1;
         min-height: calc(100vh - 60px);
     }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-    </script>
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+</script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\ExportData;
 use App\Models\Pendaftaran;
+use App\Models\Peserta;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -80,9 +81,23 @@ class PendaftaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Request $request)
     {
-        return view('pages.detail');
+        $search = $request->input('search');
+
+        
+        $pesertas = Peserta::where(function ($query) use ($search) {
+            $query
+                ->where('nama_peserta', 'LIKE', '%' . $search . '%')
+                ->orWhere('alamat_peserta', 'LIKE', '%' . $search . '%')
+                ->orWhere('nomer_telepon', 'LIKE', '%' . $search . '%')
+                ->orWhere('email_peserta', 'LIKE', '%' . $search . '%')
+                ->orWhere('pas_poto', 'LIKE', '%' . $search . '%');
+        })->get();
+
+        return view('pages.detail', [
+            'pesertas' => $pesertas,
+        ]);
     }
 
     /**

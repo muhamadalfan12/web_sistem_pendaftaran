@@ -12,21 +12,7 @@ class PesertaController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->input('search');
-
-        
-        $pesertas = peserta::where(function ($query) use ($search) {
-            $query
-                ->where('nama_peserta', 'LIKE', '%' . $search . '%')
-                ->orWhere('alamat_peserta', 'LIKE', '%' . $search . '%')
-                ->orWhere('nomer_telepon', 'LIKE', '%' . $search . '%')
-                ->orWhere('email_peserta', 'LIKE', '%' . $search . '%')
-                ->orWhere('pas_foto', 'LIKE', '%' . $search . '%');
-        })->get();
-
-        return view('pages.detail', [
-            'pesertas' => $pesertas,
-        ]);
+        //
     }
 
     /**
@@ -47,24 +33,29 @@ class PesertaController extends Controller
             'alamat_peserta'    => 'required',
             'nomer_telepon'     => 'required',
             'email_peserta'     => 'required',
-            'pas_foto'          => 'required',
+            'pas_poto'          => 'required|image|mimes:png,jpg,jpeg|max:2048',
         ]);
+
+        $pas_poto = $request->file('pas_poto');
+        $pas_poto->storeAs('public/peserta', $pas_poto->hashName());
+
 
         $peserta = Peserta::create([
             'nama_peserta'      => $request->nama_peserta,
             'alamat_peserta'    => $request->alamat_peserta,
             'nomer_telepon'     => $request->nomer_telepon,
             'email_peserta'     => $request->email_peserta,
-            'pas_foto'          => $request->pas_foto,
+            'pas_poto'          => $pas_poto->hashName(),
         ]);
+        
 
         if ($peserta) {
-            //redirect dengan pesan sukses
-            return redirect()->route('peserta.index')->with(['success' => 'Data Berhasil Disimpan!']);
+            // Redirect dengan pesan sukses dan kembali ke halaman sebelumnya
+            return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
         } else {
-            //redirect dengan pesan error
-            return redirect()->route('peserta.index')->with(['error' => 'Data Gagal Disimpan!']);
-        }
+            // Redirect dengan pesan error dan kembali ke halaman sebelumnya
+            return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
+        }        
     }
 
     /**
@@ -100,6 +91,6 @@ class PesertaController extends Controller
 
         $peserta->delete();
 
-        return redirect()->route('peserta.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect()->back()->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }
