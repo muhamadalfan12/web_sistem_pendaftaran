@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('pesertas', function (Blueprint $table) {
             $table->id();
             $table->string('nama_peserta');
-            $table->string('alamat');
+            $table->string('alamat_peserta');
             $table->string('nomer_telepon');
-            $table->string('email');
+            $table->string('email_peserta');
             $table->string('pas_poto');
             $table->timestamps();
         });

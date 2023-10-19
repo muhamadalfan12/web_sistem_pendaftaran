@@ -62,27 +62,41 @@
                         <div class="d-flex flex-row mb-3">
                             <div class="p-2"><h2 class="text-start">Detail Peserta</h2>
                             </div>
-                            <div class="p-2"> <a class="btn btn-primary" href="/pendaftaran/create" role="button">Tambah</a></div>
+                            <div class="p-2"> <a class="btn btn-primary" href="/peserta/create" role="button">Tambah</a></div>
                         </div>
                         <table class="table table-striped table-bordered text-center ">
                             <thead>
                                 <tr>
                                     <th scope="col">Nama Peserta</th>
-                                    <th scope="col">Alamat</th>
-                                    <th scope="col">Nomor Telepon</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col">Alamat Peserta</th>
+                                    <th scope="col">Nomer Telepon</th>
+                                    <th scope="col">Email Peserta</th>
                                     <th scope="col">Pas Foto</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                @foreach ($pesertas as $peserta)
+                    <tr onclick="window.location.href='peserta/{peserta}'">
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $peserta->nama_peserta }}</td>
+                    <td>{{ $peserta->alamat_peserta }}</td>
+                    <td>{{ $peserta->nomer_telepon }}</td>
+                    <td>{{ $peserta->email_peserta }}</td>
+                    <td>{{ $peserta->pas_foto }}</td>
+                    <td>
+                        <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                        action="{{ route('peserta.destroy', $peserta->id) }}" method="POST">
+                        <a href="{{ route('peserta.edit', $peserta->id) }}"
+                            class="btn btn-sm btn-primary">EDIT</a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                    </form>
+                </td>
+                    </tr>
+                    @endforeach
                             </tbody>
                         </table>
                     </div>
