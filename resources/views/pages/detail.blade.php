@@ -32,32 +32,32 @@
                                 <tr>
                                     <th scope="row">Nama Pelatihan</th>
                                     <td>:</td>
-                                    <td></td>
+                                    <td>{{ $pendaftaran->nama_pelatihan }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Nama Pelatih</th>
                                     <td>:</td>
-                                    <td></td>
+                                    <td>{{ $pendaftaran->nama_pelatih }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Nomer Pelatih</th>
                                     <td>:</td>
-                                    <td></td>
+                                    <td>{{ $pendaftaran->nomer_pelatih }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Waktu Pelatihan</th>
                                     <td>:</td>
-                                    <td></td>
+                                    <td>{{ $pendaftaran->waktu_pelatihan }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Jumlah Biaya</th>
                                     <td>:</td>
-                                    <td></td>
+                                    <td>{{ $pendaftaran->jumlah_biaya }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Kouta Peserta</th>
                                     <td>:</td>
-                                    <td></td>
+                                    <td>{{ $pendaftaran->kouta_peserta }}</td>
                                 </tr>
                             </tbody>
                         </table>

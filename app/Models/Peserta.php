@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Peserta extends Model
 {
+    public function pelatih()
+    {
+        return $this->belongsTo(Pendaftaran::class);
+    }
+
     use HasFactory;
     protected $fillable = [
         'nama_peserta'  ,
