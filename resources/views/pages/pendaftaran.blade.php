@@ -35,7 +35,7 @@
                     </thead>
                     <tbody>
                         @foreach ($pendaftarans as $pendaftaran)
-                    <tr>
+                    <tr onclick="window.location.href='pendaftaran/{pendaftaran}'">
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $pendaftaran->nama_pelatihan }}</td>
                     <td>{{ $pendaftaran->nama_pelatih }}</td>

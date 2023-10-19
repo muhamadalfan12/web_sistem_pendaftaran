@@ -80,9 +80,9 @@ class PendaftaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pendaftaran $pendaftaran)
+    public function show()
     {
-        //
+        return view('pages.detail');
     }
 
     /**
