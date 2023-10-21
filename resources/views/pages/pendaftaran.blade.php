@@ -21,7 +21,7 @@
                     <a href="{{ url('pendaftaran/export/excel') }}" class="btn btn-success">Export To Excel</a>
                     {{-- <button type="button" class="btn btn-success" href="#" role="button">Export To Excel</button> --}}
                 </div>
-                <table class="mt-3 table table-hover table-drak text-center">
+                <table class="mt-3 table table-hover table-striped table-bordered text-center">
                     <thead>
                         <tr class="bg-info">
                             <th>No</th>
