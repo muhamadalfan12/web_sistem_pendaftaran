@@ -90,13 +90,13 @@ class PendaftaranController extends Controller
     {
         $pendaftaran = $this->pendaftarans->find($id);
         if (!$pendaftaran) {
-            session()->flash('error','Pelatihan tidak ditemukan');
+            session()->flash('error', 'Pelatihan tidak ditemukan');
             return redirect()->route('pendaftaran.index');
         }
 
         $search = $request->input('search');
 
-        
+
         $pesertas = Peserta::where(function ($query) use ($search) {
             $query
                 ->where('nama_peserta', 'LIKE', '%' . $search . '%')
@@ -117,7 +117,8 @@ class PendaftaranController extends Controller
      */
     public function edit(Pendaftaran $pendaftaran)
     {
-        //
+        $pendaftaran = Pendaftaran::find($pendaftaran->id);
+        return view('pages.edit', compact('pendaftaran'));
     }
 
     /**
@@ -125,7 +126,32 @@ class PendaftaranController extends Controller
      */
     public function update(Request $request, Pendaftaran $pendaftaran)
     {
-        //
+        $this->validate($request, [
+            'nama_pelatihan' => 'required',
+            'nama_pelatih' => 'required',
+            'nomer_pelatih' => 'required',
+            'waktu_pelatihan' => 'required',
+            'jumlah_biaya' => 'required',
+            'kouta_peserta' => 'required',
+        ]);
+
+        $pendaftaran = Pendaftaran::find($pendaftaran->id);
+        $pendaftaran->update([
+            'nama_pelatihan'  => $request->nama_pelatihan,
+            'nama_pelatih'    => $request->nama_pelatih,
+            'nomer_pelatih'   => $request->nomer_pelatih,
+            'waktu_pelatihan' => $request->waktu_pelatihan,
+            'jumlah_biaya'    => $request->jumlah_biaya,
+            'kouta_peserta'   => $request->kouta_peserta,
+        ]);
+
+        if ($pendaftaran) {
+            //redirect dengan pesan sukses
+            return redirect()->route('pendaftaran.index')->with(['success' => 'Data Berhasil Diubah!']);
+        } else {
+            //redirect dengan pesan error
+            return redirect()->route('pendaftaran.index')->with(['error' => 'Data Gagal Diubah!']);
+        }
     }
 
     /**
