@@ -8,7 +8,7 @@ use App\Models\Pendaftaran;
 
 Route::get('/', [LoginController::class, 'index']);
 
-Route::get('/listpeserta', [PesertaController::class, 'index'])->name('listpeserta');
+// Route::get('/listpeserta', [PesertaController::class, 'index'])->name('listpeserta');
 
 // Rute Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
