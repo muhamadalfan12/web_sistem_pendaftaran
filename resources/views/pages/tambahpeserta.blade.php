@@ -22,7 +22,7 @@
                         <form action="{{ route('peserta.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="col-sm-6">
-                                <a class="btn btn-back mb-3 shadow-sm" href="/pendaftaran/">Kembali</a>
+                                <a class="btn btn-back mb-3 shadow-sm" style="background-color:gold" href="/pendaftaran/">Kembali</a>
                             </div>
 
                             <div class="row mb-3">
@@ -66,7 +66,7 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-add mt-3 shadow-sm">Tambah</button>
+                            <button type="submit" class="btn btn-add mt-3 shadow-sm" style="background-color:rgb(6, 66, 247)">Tambah</button>
                         </form>
                     </div>
                 </div>

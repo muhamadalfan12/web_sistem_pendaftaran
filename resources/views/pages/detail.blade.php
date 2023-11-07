@@ -14,7 +14,7 @@
         <section class="wrapper" style="padding-bottom: 10rem">
             <div class="container pt-8 pt-md-14">
                 <div class="col">
-                    <a class="btn btn-back mb-3 shadow-sm" style="background-color: rgb(21, 128, 146)"
+                    <a class="btn btn-back mb-3 shadow-sm" style="background-color:gold"
                         href="/pendaftaran">Kembali</a>
                 </div>
                 <div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-16 align-items-center">
