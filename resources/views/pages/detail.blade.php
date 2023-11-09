@@ -14,8 +14,7 @@
         <section class="wrapper" style="padding-bottom: 10rem">
             <div class="container pt-8 pt-md-14">
                 <div class="col">
-                    <a class="btn btn-back mb-3 shadow-sm" style="background-color:gold"
-                        href="/pendaftaran">Kembali</a>
+                    <a class="btn btn-back mb-3 shadow-sm" style="background-color:gold" href="/pendaftaran">Kembali</a>
                 </div>
                 <div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-16 align-items-center">
                     <div class="col-md-12 title-form mt-3 mb-1 text-center" id="title-form">
@@ -65,8 +64,9 @@
                             <div class="p-2">
                                 <h2 class="text-start">Detail Peserta</h2>
                             </div>
-                            <div class="p-2"> <a class="btn btn-primary" href="/peserta/create"
-                                    role="button">Tambah</a></div>
+                            <div class="p-2"> <a class="btn btn-primary"
+                                    href="{{ route('peserta.create', [$pendaftaran->id]) }}" role="button">Tambah</a>
+                            </div>
                         </div>
                         <table class="table table-striped table-bordered text-center ">
                             <thead>
@@ -82,7 +82,7 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($pesertas as $peserta)
+                                @foreach ($pendaftaran->pesertas as $peserta)
                                     <tr onclick="window.location.href='{{ route('peserta.show', $peserta->id) }}'">
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $peserta->nama_peserta }}</td>

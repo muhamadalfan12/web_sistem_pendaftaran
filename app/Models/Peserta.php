@@ -19,5 +19,6 @@ class Peserta extends Model
         'nomer_telepon' ,
         'email_peserta' ,
         'pas_poto'      ,
+        'pendaftaran_id',
     ];
 }

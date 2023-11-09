@@ -88,7 +88,8 @@ class PendaftaranController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $pendaftaran = $this->pendaftarans->find($id);
+        $pendaftaran = Pendaftaran::find($id); // Menggantilah $id dengan ID pendaftaran yang diinginkan
+        $pesertas = $pendaftaran->pesertas;
         if (!$pendaftaran) {
             session()->flash('error', 'Pelatihan tidak ditemukan');
             return redirect()->route('pendaftaran.index');
@@ -110,6 +111,7 @@ class PendaftaranController extends Controller
             'pesertas' => $pesertas,
             'pendaftaran' => $pendaftaran,
         ]);
+        
     }
 
     /**

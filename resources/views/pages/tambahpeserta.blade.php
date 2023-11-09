@@ -22,7 +22,8 @@
                         <form action="{{ route('peserta.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="col-sm-6">
-                                <a class="btn btn-back mb-3 shadow-sm" style="background-color:gold" href="/pendaftaran/">Kembali</a>
+                                <a class="btn btn-back mb-3 shadow-sm" style="background-color:gold"
+                                    href="javascript:history.back()">Kembali</a>
                             </div>
 
                             <div class="row mb-3">
@@ -65,8 +66,9 @@
                                     </div>
                                 @enderror
                             </div>
-
-                            <button type="submit" class="btn btn-add mt-3 shadow-sm" style="background-color:rgb(6, 66, 247)">Tambah</button>
+                            <input type="hidden" name="pendaftaran_id" value="{{ $pendaftaran->id }}">
+                            <button type="submit" class="btn btn-add mt-3 shadow-sm"
+                                style="background-color:rgb(6, 66, 247)">Tambah</button>
                         </form>
                     </div>
                 </div>

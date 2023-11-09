@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nomer_telepon');
             $table->string('email_peserta');
             $table->string('pas_poto');
+            $table->string('pendaftaran_id');
             $table->timestamps();
         });
     }

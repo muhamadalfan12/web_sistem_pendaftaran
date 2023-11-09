@@ -11,6 +11,15 @@ class Pendaftaran extends Model
     {
         return $this->hasMany(Peserta::class);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($pendaftaran) {
+            $pendaftaran->pesertas()->delete();
+        });
+    }
     
     use HasFactory;
     protected $fillable = [
@@ -20,5 +29,6 @@ class Pendaftaran extends Model
         'waktu_pelatihan',
         'jumlah_biaya',
         'kouta_peserta',
+        'pendaftaran_id',
     ];
 }

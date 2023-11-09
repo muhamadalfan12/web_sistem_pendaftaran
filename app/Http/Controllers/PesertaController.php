@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendaftaran;
 use App\Models\Peserta;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,13 @@ class PesertaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        return view('pages.tambahpeserta');
+        $pendaftaran = Pendaftaran::find($id); // atau cara lain sesuai dengan kebutuhan Anda
+
+        return view('pages.tambahpeserta', [
+            'pendaftaran' => $pendaftaran,
+        ]);
     }
 
     /**
@@ -28,35 +33,37 @@ class PesertaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nama_peserta'      => 'required',
-            'alamat_peserta'    => 'required',
-            'nomer_telepon'     => 'required',
-            'email_peserta'     => 'required',
-            'pas_poto'          => 'required|image|mimes:png,jpg,jpeg|max:2048',
-        ]);
+    $this->validate($request, [
+        'nama_peserta' => 'required',
+        'alamat_peserta' => 'required',
+        'nomer_telepon' => 'required',
+        'email_peserta' => 'required',
+        'pas_poto' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+    ]);
 
-        $pas_poto = $request->file('pas_poto');
-        $pas_poto->storeAs('public/peserta', $pas_poto->hashName());
+    $pas_poto = $request->file('pas_poto');
+    $pas_poto->storeAs('public/peserta', $pas_poto->hashName());
 
+    // Ambil ID pendaftaran yang sesuai dari request
+    $pendaftaranId = $request->input('pendaftaran_id');
 
-        $peserta = Peserta::create([
-            'nama_peserta'      => $request->nama_peserta,
-            'alamat_peserta'    => $request->alamat_peserta,
-            'nomer_telepon'     => $request->nomer_telepon,
-            'email_peserta'     => $request->email_peserta,
-            'pas_poto'          => $pas_poto->hashName(),
-        ]);
-        
+    $peserta = Peserta::create([
+        'nama_peserta' => $request->nama_peserta,
+        'alamat_peserta' => $request->alamat_peserta,
+        'nomer_telepon' => $request->nomer_telepon,
+        'email_peserta' => $request->email_peserta,
+        'pas_poto' => $pas_poto->hashName(),
+        'pendaftaran_id' => $pendaftaranId, // Tautkan peserta dengan pendaftaran yang sesuai
+    ]);
 
-        if ($peserta) {
-            // Redirect dengan pesan sukses dan kembali ke halaman sebelumnya
-            return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
-        } else {
-            // Redirect dengan pesan error dan kembali ke halaman sebelumnya
-            return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
-        }        
+    if ($peserta) {
+        // Redirect dengan pesan sukses dan kembali ke halaman sebelumnya
+        return redirect()->route('pendaftaran.show', $pendaftaranId)->with(['success' => 'Peserta berhasil ditambahkan!']);
+    } else {
+        // Redirect dengan pesan error dan kembali ke halaman sebelumnya
+        return redirect()->back()->with(['error' => 'Gagal menambahkan peserta!']);
     }
+}
 
     /**
      * Display the specified resource.
