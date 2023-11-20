@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pendaftaran;
 use App\Models\Peserta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PesertaController extends Controller
 {
@@ -100,45 +101,61 @@ class PesertaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Peserta $peserta)
+    public function edit(Peserta $peserta, $id)
     {
-    return view('pages.editpeserta', compact('peserta'));
+        $peserta = Peserta::find($id);
+        return view('pages.editpeserta', compact('peserta'));
     }
 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Peserta $peserta)
+    public function update(Request $request, Peserta $peserta, $id)
 {
     $this->validate($request, [
         'nama_peserta'   => 'required',
         'alamat_peserta' => 'required',
         'nomer_telepon'  => 'required',
         'email_peserta'  => 'required',
-        'pas_poto'       => 'required|image|mimes:png,jpg,jpeg|max:2048',
+        'pas_poto'       => 'image|mimes:png,jpg,jpeg|max:2048',
     ]);
 
-    $pas_poto = $request->file('pas_poto');
-    $pas_poto_path = $pas_poto->storeAs('public/peserta', $pas_poto->hashName());
+    $peserta = Peserta::find($id);
+    $pendaftaranId = $peserta->pendaftaran_id;
+    if ($request->hasFile('pas_poto')) {
+        // Upload new image
+        $pas_poto = $request->file('pas_poto');
+        $pas_poto_path = $pas_poto->storeAs('public/peserta', $pas_poto->hashName());
+        
+        // Delete old image
+        Storage::delete('public/peserta/'.$peserta->pas_poto);
 
-    $pendaftaranId = $request->input('pendaftaran_id');
+        // Update peserta with new image
+        $peserta->update([
+            'nama_peserta'   => $request->nama_peserta,
+            'alamat_peserta' => $request->alamat_peserta,
+            'nomer_telepon'  => $request->nomer_telepon,
+            'email_peserta'  => $request->email_peserta,
+            'pas_poto'       => $pas_poto->hashName(),
+        ]);
 
-    $peserta->update([
-        'nama_peserta'   => $request->nama_peserta,
-        'alamat_peserta' => $request->alamat_peserta,
-        'nomer_telepon'  => $request->nomer_telepon,
-        'email_peserta'  => $request->email_peserta,
-        'pas_poto'       => $pas_poto_path, // Simpan path file, bukan instance file
-        'pendaftaran_id' => $pendaftaranId, // Tautkan peserta dengan pendaftaran yang sesuai
-    ]);
+    } else {
+        // Update peserta without image
+        $peserta->update([
+            'nama_peserta'   => $request->nama_peserta,
+            'alamat_peserta' => $request->alamat_peserta,
+            'nomer_telepon'  => $request->nomer_telepon,
+            'email_peserta'  => $request->email_peserta,
+        ]);
+    }
 
     if ($peserta) {
-        // Redirect dengan pesan sukses
-        return redirect()->route('peserta.index')->with(['success' => 'Data Berhasil Diubah!']);
+        // Redirect dengan pesan sukses dan kembali ke halaman sebelumnya
+        return redirect()->route('pendaftaran.show', $pendaftaranId)->with(['success' => 'Peserta berhasil ditambahkan!']);
     } else {
-        // Redirect dengan pesan error
-        return redirect()->route('peserta.index')->with(['error' => 'Data Gagal Diubah!']);
+        // Redirect dengan pesan error dan kembali ke halaman sebelumnya
+        return redirect()->back()->with(['error' => 'Gagal menambahkan peserta!']);
     }
 }
 

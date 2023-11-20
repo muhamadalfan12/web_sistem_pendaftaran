@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Edit Data Peserta</title>
+    <title>Edit Peserta</title>
     <link rel="icon" href="{{ asset('public/storage/images/logo-kemnaker.png') }}">
 </head>
 
@@ -19,14 +19,13 @@
                         <h1>EDIT DATA PESERTA</h1>
                     </div>
                     <div class="row mb-3">
-                        <form action="{{ route('peserta.update') }}" method="POST" enctype="multipart/form-data">
-                            @method('put')
+                        <form action="{{ route('peserta.update', $peserta->id) }}" method="POST"
+                            enctype="multipart/form-data">
+                            @method('PUT')
                             @csrf
-                            <!-- Input hidden untuk menyertakan ID peserta -->
-                            <input type="hidden" name="peserta_id" value="{{ $peserta->id }}">
-
                             <div class="col-sm-6">
-                                <a class="btn btn-back mb-3 shadow-sm" href="javascript:history.back()">Kembali</a>
+                                <a class="btn btn-back mb-3 shadow-sm" style="background-color:gold"
+                                    href="javascript:history.back()">Kembali</a>
                             </div>
 
                             <div class="row mb-3">
@@ -34,12 +33,14 @@
                                     <label for="nama_peserta" class="col-form-label">Nama Peserta</label>
                                     <input type="text" class="form-control shadow-sm bg-body-tertiary rounded"
                                         id="nama_peserta" name="nama_peserta" placeholder="Masukkan Nama Peserta"
-                                        onkeypress="return hanyaHurufDanSpasi(event)" required value="{{ $peserta->nama_peserta }}">
+                                        onkeypress="return hanyaHurufDanSpasi(event)"
+                                        value="{{ $peserta->nama_peserta }}" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="alamat_peserta" class="col-form-label">Alamat Peserta</label>
                                     <input class="form-control shadow-sm bg-body-tertiary rounded" id="alamat_peserta"
-                                        name="alamat_peserta" placeholder="Masukkan Alamat Peserta" required>
+                                        name="alamat_peserta" placeholder="Masukkan Alamat Peserta"
+                                        value="{{ $peserta->alamat_peserta }}" required>
                                 </div>
                             </div>
 
@@ -48,12 +49,14 @@
                                     <label for="nomer_telepon" class="col-form-label">Nomer Telepon</label>
                                     <input type="text" class="form-control shadow-sm bg-body-tertiary rounded"
                                         id="nomer_telepon" name="nomer_telepon" placeholder="Masukkan Nomer Telepon"
-                                        onkeypress="return hanyaAngka(event)" required>
+                                        onkeypress="return hanyaAngka(event)" value="{{ $peserta->nomer_telepon }}"
+                                        required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="email_peserta" class="col-form-label">Email Peserta</label>
                                     <input class="form-control shadow-sm bg-body-tertiary rounded" id="email_peserta"
-                                        name="email_peserta" placeholder="Masukkan Email Peserta" required>
+                                        name="email_peserta" placeholder="Masukkan Email Peserta"
+                                        value="{{ $peserta->email_peserta }}" required>
                                 </div>
                             </div>
 
@@ -69,7 +72,8 @@
                                     </div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-add mt-3 shadow-sm">Edit</button>
+                            <button type="submit" class="btn btn-add mt-3 shadow-sm"
+                                style="background-color:rgb(6, 66, 247)">Edit</button>
                         </form>
                     </div>
                 </div>
@@ -82,20 +86,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <script>
-        $(function() {
-            $('input[name="waktu_pelatihan"]').daterangepicker({
-                showDropdowns: true,
-                locale: {
-                    format: 'DD MMMM YYYY'
-                },
-            }, function(start, end, label) {
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
-                    .format('YYYY-MM-DD'));
-            });
-        });
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
