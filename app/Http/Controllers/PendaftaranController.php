@@ -111,9 +111,7 @@ class PendaftaranController extends Controller
             'pesertas' => $pesertas,
             'pendaftaran' => $pendaftaran,
         ]);
-        
     }
-
     /**
      * Show the form for editing the specified resource.
      */

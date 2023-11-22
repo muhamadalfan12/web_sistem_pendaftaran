@@ -24,3 +24,29 @@
     @endforeach
     </tbody>
 </table>
+
+<br>
+
+<table id="TablePeserta" border="1">
+    <thead>
+        <tr>
+            {{-- dibawah adalah tabel peserta --}}
+            <th>No</th>
+            <th>Nama Peserta</th>
+            <th>Alamat Peserta</th>
+            <th>Nomer Telepon</th>
+            <th>Email Peserta</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($pendaftaran->pesertas as $peserta)
+        <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td>{{ $peserta->nama_peserta }}</td>
+            <td>{{ $peserta->alamat_peserta }}</td>
+            <td>{{ $peserta->nomer_telepon }}</td>
+            <td>{{ $peserta->email_peserta }}</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
