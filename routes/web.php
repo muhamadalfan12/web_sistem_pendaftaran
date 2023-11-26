@@ -20,8 +20,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('pendaftaran', PendaftaranController::class);
     Route::resource('peserta', PesertaController::class)->except(['create']);
     Route::get('/peserta/create/{id}', [PesertaController::class, 'create'])->name('peserta.create');
-
-
 });
 
 Route::get('/pendaftaran/export/excel', [PendaftaranController::class, 'export_excel']);
+Route::get('/peserta-pelatihan/export/excel/{pendaftaranId}', [PendaftaranController::class, 'export_peserta_pelatihan']);

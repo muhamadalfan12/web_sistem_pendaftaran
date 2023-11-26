@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ExportData;
+use App\Exports\PesertaPelatihan;
 use App\Models\Pendaftaran;
 use App\Models\Peserta;
 use Illuminate\Http\Request;
@@ -169,5 +170,10 @@ class PendaftaranController extends Controller
     function export_excel()
     {
         return Excel::download(new ExportData, "Pendaftaran BLKK.xlsx");
+    }
+
+    public function export_peserta_pelatihan($pendaftaranId)
+    {
+        return Excel::download(new PesertaPelatihan($pendaftaranId), "Peserta Pelatihan BLKK.xlsx");
     }
 }
