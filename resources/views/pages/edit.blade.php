@@ -126,63 +126,6 @@
         }
     </script>
     <script>
-        // Dapatkan elemen checkbox "Lain-lain" berdasarkan ID
-        var lainlainCheckbox = document.getElementById('lainlain');
-
-        // Dapatkan elemen row "keterangan" berdasarkan ID
-        var keteranganRow = document.getElementById('keteranganRow');
-
-        // Tambahkan event listener ke checkbox "Lain-lain"
-        lainlainCheckbox.addEventListener('change', function() {
-            // Jika checkbox "Lain-lain" dicentang, tampilkan input "keterangan"
-            if (this.checked) {
-                keteranganRow.style.display = 'block';
-            } else {
-                // Jika checkbox "Lain-lain" tidak dicentang, sembunyikan input "keterangan" dan hapus isinya
-                keteranganRow.style.display = 'none';
-                document.getElementById('keterangan').value = '';
-            }
-        });
-    </script>
-    <script>
-        var angsuranCheckbox = document.getElementById('angsuran');
-
-        var keteranganRow = document.getElementById('keteranganRow');
-
-        angsuranCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                keteranganRow.style.display = 'block';
-            } else {
-                keteranganRow.style.display = 'none';
-                document.getElementById('keterangan').value = '';
-            }
-        });
-    </script>
-    <script>
-        // Dapatkan semua elemen checkbox
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-        // Tambahkan event listener untuk setiap checkbox
-        checkboxes.forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                // Jika checkbox yang sedang diubah adalah checkbox yang telah dicentang, nonaktifkan yang lainnya
-                if (this.checked) {
-                    checkboxes.forEach(function(otherCheckbox) {
-                        if (otherCheckbox !== checkbox) {
-                            otherCheckbox.disabled = true;
-                        }
-                    });
-                } else {
-                    // Jika checkbox yang sedang diubah tidak dicentang, aktifkan yang lainnya
-                    checkboxes.forEach(function(otherCheckbox) {
-                        otherCheckbox.disabled = false;
-                    });
-                }
-            });
-        });
-    </script>
-
-    <script>
         // Fungsi untuk memformat input jumlah dengan titik dan "RP"
         function formatCurrency(input) {
             // Hapus semua karakter selain angka
