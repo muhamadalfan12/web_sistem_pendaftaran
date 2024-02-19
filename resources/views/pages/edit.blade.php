@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+@include('templates.navbar')
 
 <head>
     <meta charset="UTF-8">
@@ -19,24 +20,28 @@
                         <h1>EDIT DATA PELATIHAN</h1>
                     </div>
                     <div class="row mb-3">
-                        <form action="{{ route('pendaftaran.update', $pendaftaran->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('pendaftaran.update', $pendaftaran->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="col-sm-6">
-                                <a class="btn btn-back mb-3 shadow-sm" href="/pendaftaran">Kembali</a>
+                                <a class="btn btn-back mb-3 shadow-sm" style="background-color:gold"
+                                    href="/pendaftaran">Kembali</a>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-sm-6">
                                     <label for="nama_pelatihan" class="col-form-label">Nama Pelatihan</label>
                                     <input type="text" class="form-control shadow-sm bg-body-tertiary rounded"
-                                        id="nama_pelatihan" name="nama_pelatihan" placeholder="Masukkan Nama Pelatihan" value="{{ $pendaftaran->nama_pelatihan }}"
+                                        id="nama_pelatihan" name="nama_pelatihan" placeholder="Masukkan Nama Pelatihan"
+                                        value="{{ $pendaftaran->nama_pelatihan }}"
                                         onkeypress="return hanyaHurufDanSpasi(event)" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="nama_pelatih" class="col-form-label">Nama Pelatih</label>
                                     <input type="text" class="form-control shadow-sm bg-body-tertiary rounded"
-                                        id="nama_pelatih" name="nama_pelatih" placeholder="Masukkan Nama Pelatih" value="{{ $pendaftaran->nama_pelatih }}"
+                                        id="nama_pelatih" name="nama_pelatih" placeholder="Masukkan Nama Pelatih"
+                                        value="{{ $pendaftaran->nama_pelatih }}"
                                         onkeypress="return hanyaHurufDanSpasi(event)" required>
                                 </div>
                             </div>
@@ -45,15 +50,16 @@
                                 <div class="col-sm-6">
                                     <label for="kouta_peserta" class="col-form-label">Kouta Peserta</label>
                                     <input type="text" class="form-control shadow-sm bg-body-tertiary rounded"
-                                        id="kouta_peserta" name="kouta_peserta" placeholder="Masukkan Kouta Peserta" value="{{ $pendaftaran->kouta_peserta }}"
-                                        onkeypress="return hanyaAngka(event)" required>
+                                        id="kouta_peserta" name="kouta_peserta" placeholder="Masukkan Kouta Peserta"
+                                        value="{{ $pendaftaran->kouta_peserta }}" onkeypress="return hanyaAngka(event)"
+                                        required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="waktu_pelatihan" class="col-form-label">Waktu Pelatihan</label>
                                     <input type="text" class="form-control shadow-sm bg-body-tertiary rounded"
                                         id="waktu_pelatihan" name="waktu_pelatihan"
-                                        value="{{ $pendaftaran->waktu_pelatihan }}" placeholder="Masukkan Waktu Pelatihan"
-                                        required>
+                                        value="{{ $pendaftaran->waktu_pelatihan }}"
+                                        placeholder="Masukkan Waktu Pelatihan" required>
                                 </div>
                             </div>
 
@@ -61,17 +67,19 @@
                                 <div class="col-sm-6">
                                     <label for="nomer_pelatih" class="col-form-label"> Nomer Pelatih </label>
                                     <input id="nomer_pelatih" class="form-control shadow-sm bg-body-tertiary rounded"
-                                        type="text" id="nomer_pelatih" name="nomer_pelatih" value="{{ $pendaftaran->nomer_pelatih }}"
-                                        placeholder="Masukkan Nomor Pelatih" onkeypress="return hanyaAngka(event)"
-                                        required>
+                                        type="text" id="nomer_pelatih" name="nomer_pelatih"
+                                        value="{{ $pendaftaran->nomer_pelatih }}" placeholder="Masukkan Nomor Pelatih"
+                                        onkeypress="return hanyaAngka(event)" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="jumlah_biaya" class="col-form-label">Jumlah Biaya</label>
-                                    <input class="form-control shadow-sm bg-body-tertiary rounded" id="jumlah_biaya" value="{{ $pendaftaran->jumlah_biaya }}"
-                                        name="jumlah_biaya" placeholder="Masukkan Jumlah" required>
+                                    <input class="form-control shadow-sm bg-body-tertiary rounded" id="jumlah_biaya"
+                                        value="{{ $pendaftaran->jumlah_biaya }}" name="jumlah_biaya"
+                                        placeholder="Masukkan Jumlah" required>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-add mt-3 shadow-sm">Edit</button>
+                            <button type="submit" class="btn btn-add mt-3 shadow-sm"
+                                style="background-color:rgb(6, 66, 247)">Edit</button>
                         </form>
                     </div>
                 </div>

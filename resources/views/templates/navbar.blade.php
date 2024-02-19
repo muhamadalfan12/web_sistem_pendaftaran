@@ -33,21 +33,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-            <a class="navbar-brand" href="admin">BLKK Multimedia At-Taqwa</a>
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <a href="/logout"><button style='font-size:18px' class="btn btn-md btn-link">Keluar <i
-                            class='fas fa-sign-out-alt'></i></button></a>
-            </ul>
-        </nav>
+
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -57,11 +43,10 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="https://w1.pngwing.com/pngs/823/446/png-transparent-java-logo-cirebon-bekasi-regency-kpu-kabupaten-cirebon-cirebon-regency-symbol-education-sri-baduga-maharaja-west-java.png"
-                            class="nav-logo" alt="">
+                        <img src="{{ asset('storage/images/BLKK At-taqwa.png') }}" class="nav-logo" alt="">
                     </div>
                     <div class="info">
-                        <a href="admin" class="d-block">BLKK Multimedia At-Taqwa</a>
+                        <a class="light">ADMIN</a>
                     </div>
                 </div>
 
@@ -69,11 +54,10 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li
-                            class="nav-item {{ Request::is('updatevisimisi*', 'updatesejarah*', 'updatekepaladesa*') ? 'menu-open' : '' }}">
+                        <li class="nav-item {{ Request::is('visimisi*', 'sejarah*') ? 'menu-open' : '' }}">
                             <a href="#"
-                                class="nav-link {{ Request::is('updatevisimisi*', 'updatesejarah*', 'updatekepaladesa*') ? 'active' : '' }}">
-                                <i class="fas fa-university"></i>
+                                class="nav-link {{ Request::is('visimisi*', 'sejarah*') ? 'active' : '' }}">
+                                <i class="fas fa-user mr-1"></i>
                                 <p>
                                     Profile
                                     <i class="right fas fa-angle-left"></i>
@@ -81,15 +65,14 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/updatevisimisi"
-                                        class="nav-link {{ Request::is('updatevisimisi*') ? 'active' : '' }}">
+                                    <a href="/visimisi"
+                                        class="nav-link {{ Request::is('visimisi*') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Visi Misi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/updatesejarah"
-                                        class="nav-link {{ Request::is('updatesejarah*') ? 'active' : '' }}">
+                                    <a href="/sejarah" class="nav-link {{ Request::is('sejarah*') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Sejarah</p>
                                     </a>
@@ -97,48 +80,57 @@
                             </ul>
                         </li>
 
-                        <li
-                            class="nav-item {{ Request::is('updategeografis*', 'updatedemografis*', 'updateekonomi*') ? 'menu-open' : '' }}">
-                            <a href="#"
-                                class="nav-link {{ Request::is('updategeografis*', 'updatedemografis*', 'updateekonomi*') ? 'active' : '' }}">
-                                <i class="fas fa-scroll"></i>
+                        <li class="nav-item">
+                            <a href="/pendaftaran" class="nav-link {{ Request::is('pendaftaran*') ? 'active' : '' }}">
+                                <i class="fas fa-clipboard-list mr-1"></i>
                                 <p>
                                     Pendaftaran
-                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/updategeografis"
-                                        class="nav-link {{ Request::is('updategeografis*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Pelatihan</p>
-                                    </a>
-                                </li>
-
-                        <li class="nav-item menu {{ Request::is('updatepkk*', 'updatekartun*') ? 'menu-open' : '' }}">
-                            <a href="#"
-                                class="nav-link {{ Request::is('updatepkk*', 'updatekartun*') ? 'active' : '' }}">
-                                <i class="fas fa-table"></i>
-                                <p>
-                                    Lembaga
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/updatepkk"
-                                        class="nav-link {{ Request::is('updatepkk*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Struktur Organisasi</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-                    </ul> <!-- /.sidebar-menu -->
+
+                        <li class="nav-item menu">
+                            <a href="/struktur" class="nav-link {{ Request::is('struktur*') ? 'active' : '' }}">
+                                <i class="fas fa-university mr-1"></i>
+                                <p>
+                                    Struktur Organisasi
+                                </p>
+                            </a>
+                        </li>
+                    </ul><!-- /.sidebar-menu -->
+                </nav>
+
+            </div>
+            <div class="sidebar-bottom">
+                <!-- Konten sidebar bottom -->
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <!-- Tombol keluar -->
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-divider">
+                            <button style="font-size: 18px" class="btn btn-md text-white btn-keluar">Keluar
+                                <i class="fas fa-sign-out-alt"></i></button>
+                        </a>
+                    </li>
+                </ul>
             </div>
             <!-- /.sidebar -->
         </aside>
+
+    </div>
 </body>
 
 </html>
+<script>
+    $(document).ready(function() {
+        if (window.location.pathname === '/pendaftaran/create') {
+            $('.navbar-nav').hide(); // menyembunyikan tombol "Keluar"
+        }
+    });
+</script>
+<style>
+    .btn-keluar:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+</style>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+@include('templates.navbar')
 
 <head>
     <meta charset="UTF-8">

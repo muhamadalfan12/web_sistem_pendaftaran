@@ -23,7 +23,7 @@ class LoginController extends Controller
         
     if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
-        return redirect()->intended('/pendaftaran'); // Arahkan pengguna ke halaman pendaftaran
+        return redirect()->intended('/home'); // Arahkan pengguna ke halaman pendaftaran
     }
 
         return back()->with('loginError', 'Username atau Password salah');
@@ -40,6 +40,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

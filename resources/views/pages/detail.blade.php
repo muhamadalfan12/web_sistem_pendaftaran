@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+@include('templates.navbar')
 
 <head>
     <meta charset="UTF-8">
@@ -66,7 +67,8 @@
                             </div>
                             <div class="p-2"> <a class="btn btn-primary"
                                     href="{{ route('peserta.create', [$pendaftaran->id]) }}" role="button">Tambah</a>
-                                    <a href="{{ url('/peserta-pelatihan/export/excel', [$pendaftaran->id]) }}" class="btn btn-success">Export To Excel</a>
+                                <a href="{{ url('/peserta-pelatihan/export/excel', [$pendaftaran->id]) }}"
+                                    class="btn btn-success">Export To Excel</a>
                             </div>
                         </div>
                         <table class="table table-striped table-bordered text-center ">

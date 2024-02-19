@@ -7,7 +7,11 @@
         <div class="card-body">
             <div class="classic-view">
                 <article class="post">
-                    <h4 class="text-center">Selamat Datang Admin</h4>
+                    <div class="post-content">
+                        <img src="{{ asset('storage/images/BLKK At-taqwa.png') }}" alt="Welcome Image" class="img-fluid"
+                            style="width: 200px; height: 200px;">
+                        <h4 class="text-center">Selamat Datang Admin</h4>
+                    </div>
                 </article>
             </div>
         </div>
