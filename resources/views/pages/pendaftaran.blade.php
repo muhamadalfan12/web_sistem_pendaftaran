@@ -45,15 +45,14 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($pendaftarans as $pendaftaran)
-                                            <tr
-                                                onclick="window.location.href='{{ route('pendaftaran.show', $pendaftaran->id) }}'">
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $pendaftaran->nama_pelatihan }}</td>
-                                                <td>{{ $pendaftaran->nama_pelatih }}</td>
-                                                <td>{{ $pendaftaran->nomer_pelatih }}</td>
-                                                <td>{{ $pendaftaran->waktu_pelatihan }}</td>
-                                                <td>{{ $pendaftaran->jumlah_biaya }}</td>
-                                                <td>{{ $pendaftaran->kouta_peserta }}</td>
+                                            <tr>
+                                                <td onclick="window.location.href='{{ route('pendaftaran.show', $pendaftaran->id) }}'" >{{ $loop->iteration }}</td>
+                                                <td onclick="window.location.href='{{ route('pendaftaran.show', $pendaftaran->id) }}'">{{ $pendaftaran->nama_pelatihan }}</td>
+                                                <td onclick="window.location.href='{{ route('pendaftaran.show', $pendaftaran->id) }}'">{{ $pendaftaran->nama_pelatih }}</td>
+                                                <td onclick="window.location.href='{{ route('pendaftaran.show', $pendaftaran->id) }}'">{{ $pendaftaran->nomer_pelatih }}</td>
+                                                <td onclick="window.location.href='{{ route('pendaftaran.show', $pendaftaran->id) }}'">{{ $pendaftaran->waktu_pelatihan }}</td>
+                                                <td onclick="window.location.href='{{ route('pendaftaran.show', $pendaftaran->id) }}'">{{ $pendaftaran->jumlah_biaya }}</td>
+                                                <td onclick="window.location.href='{{ route('pendaftaran.show', $pendaftaran->id) }}'">{{ $pendaftaran->kouta_peserta }}</td>
                                                 <td>
                                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                         action="{{ route('pendaftaran.destroy', $pendaftaran->id) }}"

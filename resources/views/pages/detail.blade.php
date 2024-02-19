@@ -86,13 +86,13 @@
 
                             <tbody>
                                 @foreach ($pendaftaran->pesertas as $peserta)
-                                    <tr onclick="window.location.href='{{ route('peserta.show', $peserta->id) }}'">
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $peserta->nama_peserta }}</td>
-                                        <td>{{ $peserta->alamat_peserta }}</td>
-                                        <td>{{ $peserta->nomer_telepon }}</td>
-                                        <td>{{ $peserta->email_peserta }}</td>
-                                        <td class="text-center">
+                                    <tr>
+                                        <td onclick="window.location.href='{{ route('peserta.show', $peserta->id) }}'">{{ $loop->iteration }}</td>
+                                        <td onclick="window.location.href='{{ route('peserta.show', $peserta->id) }}'">{{ $peserta->nama_peserta }}</td>
+                                        <td onclick="window.location.href='{{ route('peserta.show', $peserta->id) }}'">{{ $peserta->alamat_peserta }}</td>
+                                        <td onclick="window.location.href='{{ route('peserta.show', $peserta->id) }}'">{{ $peserta->nomer_telepon }}</td>
+                                        <td onclick="window.location.href='{{ route('peserta.show', $peserta->id) }}'">{{ $peserta->email_peserta }}</td>
+                                        <td onclick="window.location.href='{{ route('peserta.show', $peserta->id) }}'" class="text-center">
                                             <img src="{{ Storage::url('public/peserta/') . $peserta->pas_poto }}"
                                                 class="rounded" style="width: 150px">
                                         </td>
