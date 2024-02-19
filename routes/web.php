@@ -13,7 +13,7 @@ Route::get('/', [LoginController::class, 'index']);
 // Rute Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticated']);
-// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Rute yang perlu dilindungi oleh middleware 'auth'
 Route::middleware(['auth'])->group(function () {
